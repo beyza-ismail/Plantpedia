@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from .models import CustomUser
+from .models import CustomUser, Plant
 
 class CustomAuthenticationForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
@@ -36,4 +36,16 @@ class CustomerRegistrationForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+
+class AddPlantForm(forms.ModelForm):
+    class Meta:
+        model = Plant
+        exclude = ('user',)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.visible_fields():
+            field.field.widget.attrs['class'] = 'form-control mb-3'
+
 

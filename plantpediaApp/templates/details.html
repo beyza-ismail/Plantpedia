@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="container w-75 m-auto">
+        <div class="w-75 m-auto shadow-lg bg-light rounded p-5" style="width: 82%!important">
+
+            <div class="row mt-2">
+                <div class="col-md-6 p-3 ">
+                    <h1 class="align-center text-center mb-3">{{ plant.name }}</h1>
+                    <p class="fs-5">Created by: {{ plant.user.get_full_name }}</p>
+                    <p class="fs-5">Description: {{ plant.description }}</p>
+                    <p class="fs-5">Scientific name: {{ plant.scientific_name }}</p>
+                    <p class="fs-5">Care instructions: {{ plant.care_instructions }}</p>
+                    <p class="fs-5">Plant age: {{ plant.age }}</p>
+                </div>
+                <div class="col-md-6 text-center justify-content-center align-center">
+                    <img style="width: 27rem; height: 30rem" class="mb-3" src="{{ MEDIA_URL }}{{ plant.image.url }}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
