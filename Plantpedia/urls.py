@@ -23,10 +23,14 @@ from plantpediaApp.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
-    path('login/', user_login),
+    path('login/', user_login, name='login'),
     path('register/', register_customer),
     path('logout/', logout_view, name='logout'),
-    path('plants/', all_plants),
+    path('plants/', all_plants, name='plants'),
     path('add-plant/', add_plant, name='add_plant'),
-    path('plants/<int:plant_id>/', details, name="details")
+    path('plants/<int:plant_id>/', details, name="details"),
+    path('delete-plant/<int:plant_id>/', delete_plant, name='delete_plant'),
+    path('plant/edit/<int:plant_id>/', edit_plant, name='edit_plant'),
+    path('about/', about, name='about'),
+    path('contact/', contact, name='contact'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

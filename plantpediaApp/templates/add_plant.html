@@ -9,7 +9,12 @@
             <form method="POST" action="{% url 'add_plant' %}" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form }}
-                <button type="submit" class="btn btn-success">Save</button>
+                <div class="d-flex justify-content-between"> <!-- Use Bootstrap flex utilities -->
+                    <a href="{% url 'plants' %}" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </div>
+{#                <button type="submit" class="btn btn-success">Save</button>#}
+{#                <a href="{% url 'plants' %}" class="btn btn-secondary">Cancel</a>#}
             </form>
 
         </div>

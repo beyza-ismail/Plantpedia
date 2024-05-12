@@ -1,6 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="container" style="text-align: center">
+    <style>
+        /* Style to ensure cards have the same height */
+        .card {
+            height: 100%;
+        }
+        .card-body {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+    <div class="container" >
         <div class="d-flex justify-content-between align-items-center mt-4 mb-4">
             <div style="flex: 1;"> <!-- Placeholder for spacing -->
             </div>
@@ -29,8 +39,10 @@
                                 <small class="text-muted pt-2" style="width: 70%">Created
                                     by {{ p.user.get_full_name }}</small>
                             </p>
-                            <a href="{% url 'details' p.id %}" type="button" class="btn btn-outline-dark">See
+                            <div class="mt-auto">
+                                <a href="{% url 'details' p.id %}" type="button" class="btn btn-outline-dark">See
                                 More</a>
+                            </div>
                         </div>
                     </div>
                 </div>
