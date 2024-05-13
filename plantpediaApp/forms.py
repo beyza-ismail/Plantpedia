@@ -85,3 +85,7 @@ class ReviewForm(forms.ModelForm):
             raise forms.ValidationError("Rating must be between 0 and 10.")
         return rating
 
+
+class SearchForm(forms.Form):
+    query = forms.CharField()
+

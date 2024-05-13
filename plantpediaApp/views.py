@@ -1,7 +1,8 @@
 from django.contrib.auth import logout, authenticate, login
 from django.shortcuts import render, redirect, get_object_or_404
 
-from .forms import CustomAuthenticationForm, CustomerRegistrationForm, AddPlantForm, EditPlantForm, ReviewForm
+from .forms import CustomAuthenticationForm, CustomerRegistrationForm, AddPlantForm, EditPlantForm, ReviewForm, \
+    SearchForm
 from .models import *
 
 # Create your views here.
@@ -112,3 +113,13 @@ def edit_plant(request, plant_id):
         form = EditPlantForm(instance=plant)
 
     return render(request, 'details.html', {'form': form})
+
+
+def search(request):
+    query = request.GET.get('query', '')
+    if query:
+        plants = Plant.objects.filter(name__icontains=query)  # Adjust the filter as necessary
+        return render(request, 'results.html', {'plants': plants})
+    else:
+        return render(request, 'results.html', {'plants': []})
+

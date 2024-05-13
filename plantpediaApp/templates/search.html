@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="search-bar">
+    <form method="get" action="{% url 'search' %}">
+        {{ form.as_p }}
+        <button type="submit">Search</button>
+    </form>
+</div>
+<div class="results">
+    {% for plant in results %}
+    <div>
+        <h2>{{ plant.name }}</h2>
+        <p>{{ plant.description }}</p>
+    </div>
+    {% empty %}
+    <p>No results found.</p>
+    {% endfor %}
+</div>
+{% endblock %}

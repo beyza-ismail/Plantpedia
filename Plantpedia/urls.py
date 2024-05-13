@@ -33,4 +33,5 @@ urlpatterns = [
     path('plant/edit/<int:plant_id>/', edit_plant, name='edit_plant'),
     path('about/', about, name='about'),
     path('contact/', contact, name='contact'),
+    path('search/', search, name='search'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
