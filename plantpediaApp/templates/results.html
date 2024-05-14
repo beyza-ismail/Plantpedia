@@ -3,10 +3,13 @@
 {% block content %}
     <div class="container mt-4 mb-4">
         <h1 class="text-center" style="color: #00563f;">Search Results</h1>
+    <div class="back-button">
+        <a href="{% url 'plants' %}" class="btn btn-outline-success" style="opacity: 0.4; width: 125px">Back</a>
+    </div>
         {% if plants %}
             <div class="row">
                 {% for p in plants %}
-                    <div class="col-md-4 mb-4">
+                    <div class="col-md-4 mb-4 mt-4">
                         <div class="card" style="max-width: 25rem;">
                             <img class="card-img-top" src="{{ MEDIA_URL }}{{ p.image.url }}" height="305rem"
                                  alt="Card image cap">

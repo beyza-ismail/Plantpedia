@@ -118,7 +118,7 @@ def edit_plant(request, plant_id):
 def search(request):
     query = request.GET.get('query', '')
     if query:
-        plants = Plant.objects.filter(name__icontains=query)  # Adjust the filter as necessary
+        plants = Plant.objects.filter(name__icontains=query)
         return render(request, 'results.html', {'plants': plants})
     else:
         return render(request, 'results.html', {'plants': []})
