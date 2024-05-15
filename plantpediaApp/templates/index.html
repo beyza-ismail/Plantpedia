@@ -1,6 +1,144 @@
+{#{% extends 'base.html' %}#}
+
+{#{% block content %}#}
+{#    <style>#}
+{#        .carousel-item img {#}
+{#          width: 300px;#}
+{#          height: 750px;#}
+{#        }#}
+{#    </style>#}
+{#    <div id="plantCarousel" class="carousel slide" data-bs-ride="carousel">#}
+{#        <div class="carousel-inner">#}
+{#            {% for plant in plants %}#}
+{#                <div class="carousel-item {% if forloop.first %}active{% endif %}">#}
+{#                    <img src="{{ MEDIA_URL }}{{ plant.image.url }}" class="d-block w-100" alt="{{ plant.name }}">#}
+{#                    <div class="carousel-caption d-none d-md-block">#}
+{#                        <h5>{{ plant.name }}</h5>#}
+{#                        <p>{{ plant.description }}</p>#}
+{#                    </div>#}
+{#                </div>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#        <button class="carousel-control-prev" type="button" data-bs-target="#plantCarousel" data-bs-slide="prev">#}
+{#            <span class="carousel-control-prev-icon" aria-hidden="true"></span>#}
+{#            <span class="visually-hidden">Previous</span>#}
+{#        </button>#}
+{#        <button class="carousel-control-next" type="button" data-bs-target="#plantCarousel" data-bs-slide="next">#}
+{#            <span class="carousel-control-next-icon" aria-hidden="true"></span>#}
+{#            <span class="visually-hidden">Next</span>#}
+{#        </button>#}
+{#    </div>#}
+{#{% endblock %}#}
+
+{#{% extends 'base.html' %}#}
+{##}
+{#{% block content %}#}
+{##}
+{#        <div class="container">#}
+{#      <div class="row">#}
+{#        <div class="col-md-6">#}
+{#          <div class="row">#}
+{#            <div class="col-md-6">#}
+{#              <img src="{{ plant1.image.url }}" alt="{{ plant1.name }}" class="img-fluid">#}
+{#            </div>#}
+{#            <div class="col-md-6">#}
+{#              <h3>{{ plant1.name }}</h3>#}
+{#              <p>{{ plant1.description }}</p>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#        <div class="col-md-6 order-md-last">#}
+{#          <div class="row">#}
+{#            <div class="col-md-6">#}
+{#              <h3>{{ plant2.name }}</h3>#}
+{#              <p>{{ plant2.description }}</p>#}
+{#            </div>#}
+{#            <div class="col-md-6">#}
+{#              <img src="{{ plant2.image.url }}" alt="{{ plant2.name }}" class="img-fluid">#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#      <div class="row">#}
+{#        <div class="col-md-6">#}
+{#          <div class="row">#}
+{#            <div class="col-md-6">#}
+{#              <img src="{{ plant3.image.url }}" alt="{{ plant3.name }}" class="img-fluid">#}
+{#            </div>#}
+{#            <div class="col-md-6">#}
+{#              <h3>{{ plant3.name }}</h3>#}
+{#              <p>{{ plant3.description }}</p>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+{#        <div class="col-md-6 order-md-last">#}
+{#          <div class="row">#}
+{#            <div class="col-md-6">#}
+{#              <h3>{{ plant4.name }}</h3>#}
+{#              <p>{{ plant4.description }}</p>#}
+{#            </div>#}
+{#            <div class="col-md-6">#}
+{#              <img src="{{ plant4.image.url }}" alt="{{ plant4.name }}" class="img-fluid">#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
+{##}
+{##}
+{#{% endblock %}#}
+
+
+{#{% extends 'base.html' %}#}
+{##}
+{#{% block content %}#}
+{##}
+{#<div class="container py-5">#}
+{#    <div class="row row-cols-1 row-cols-md-2 g-4">#}
+{#        {% for plant in plants %}#}
+{#        <div class="col">#}
+{#            <div class="card mb-4 box-shadow h-md-250">#}
+{#                <div class="card-body d-flex flex-column align-items-start">#}
+{#                    <strong class="d-inline-block mb-2 text-primary">{{ plant.name }}</strong>#}
+{#                    <h3 class="mb-0">#}
+{#                        <a class="text-dark" href="#">Scientific Name: {{ plant.scientific_name }}</a>#}
+{#                    </h3>#}
+{#                    <div class="mb-1 text-muted">Care Level: {{ plant.care_instructions }}</div>#}
+{#                    <p class="card-text mb-auto">{{ plant.description|truncatechars:100 }}</p>#}
+{#                    <a href="{% url 'details' plant.id %}">Continue reading</a>#}
+{#                </div>#}
+{#                <img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" src="{{ MEDIA_URL }}{{ plant.image.url }}" style="width: 200px; height: 250px;">#}
+{#            </div>#}
+{#        </div>#}
+{#        {% empty %}#}
+{#        <p>No plants available.</p>#}
+{#        {% endfor %}#}
+{#    </div>#}
+{#</div>#}
+{##}
+{#{% endblock %}#}
+
 {% extends 'base.html' %}
+
 {% block content %}
-    <div class="mt-5">
-        Coming soon...
+<div class="container py-5">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        {% for plant in plants %}
+        <div class="col">
+            <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="{{ MEDIA_URL }}{{ plant.image.url }}" alt="{{ plant.name }}" style="height: 400px">
+                <div class="card-body">
+                    <h5 class="card-title">{{ plant.name }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Scientific Name: {{ plant.scientific_name }}</h6>
+                    <p class="card-text">{{ plant.description|truncatechars:150 }}</p>
+                    <a href="{% url 'details' plant.id %}" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-muted">No plants available.</p>
+        {% endfor %}
     </div>
+</div>
 {% endblock %}

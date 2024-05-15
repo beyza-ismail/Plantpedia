@@ -1,4 +1,5 @@
 from django.contrib.auth import logout, authenticate, login
+from django.db.models import Avg
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .forms import CustomAuthenticationForm, CustomerRegistrationForm, AddPlantForm, EditPlantForm, ReviewForm, \
@@ -8,7 +9,9 @@ from .models import *
 # Create your views here.
 
 def index(request):
-    return render(request, "index.html")
+    plants = Plant.objects.all()[:6]
+    return render(request, "index.html",
+                  context={"plant1": plants[0], "plant2": plants[1], "plant3": plants[2], "plant4": plants[3], "plants": plants})
 
 def about(request):
     return render(request, "about.html")
@@ -17,7 +20,8 @@ def contact(request):
     return render(request, "contact.html")
 
 def all_plants(request):
-    plants = Plant.objects.all()
+    # plants = Plant.objects.all()
+    plants = Plant.objects.annotate(avg_rating=Avg('review__rating')).order_by('-avg_rating')
     context = {"plants": plants}
     return render(request, "plants.html", context)
 
