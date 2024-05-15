@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
     path('login/', user_login, name='login'),
-    path('register/', register_customer),
+    path('register/', register_customer, name='register'),
     path('logout/', logout_view, name='logout'),
     path('plants/', all_plants, name='plants'),
     path('add-plant/', add_plant, name='add_plant'),
@@ -34,4 +34,5 @@ urlpatterns = [
     path('about/', about, name='about'),
     path('contact/', contact, name='contact'),
     path('search/', search, name='search'),
+    path('faq/', faq, name='faq'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
