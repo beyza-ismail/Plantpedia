@@ -35,7 +35,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ p.name }}</h5>
                             <p class="card-text" style="font-size: small"><i>Scientific name:</i> {{ p.scientific_name }}</p>
-                            <p class="card-text" style="font-size: small"><i>Average Rating:</i> {{ p.avg_rating }}</p>
+                            <p class="card-text" style="font-size: small"><i>Average Rating:</i> {{ p.avg_rating|floatformat:"1"|default:"No rating" }}</p>
                             <p class="card-text">{{ p.description |slice:":190" }}...</p>
                             <p class="card-text" style="display: flex">
                                 <small class="text-muted pt-2" style="width: 70%">Created by {{ p.user.get_full_name }}</small>

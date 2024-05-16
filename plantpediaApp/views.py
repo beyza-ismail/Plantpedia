@@ -9,9 +9,10 @@ from .models import *
 # Create your views here.
 
 def index(request):
-    plants = Plant.objects.annotate(avg_rating=Avg('review__rating'))
-    plants = plants.order_by('-avg_rating')[:4]
-    return render(request, "index.html", context={"plants": plants})
+    # plants = Plant.objects.annotate(avg_rating=Avg('review__rating'))
+    # plants = plants.order_by('-avg_rating')[:4]
+    # context = {"plants": plants}
+    return render(request, "index.html")
 
 def about(request):
     return render(request, "about.html")
