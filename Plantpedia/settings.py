@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ep&ve1q&s=gb$hn=#+6@pl-(9zg-dx&2dcvx+6ojq*azeylrz$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '0.0.0.0', '127.0.0.1']
 AUTH_USER_MODEL = 'plantpediaApp.CustomUser'
 
 # Application definition
